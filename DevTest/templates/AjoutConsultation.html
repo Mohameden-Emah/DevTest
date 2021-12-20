@@ -1,0 +1,134 @@
+  {% extends "header.html" %}
+  {% load static %} 
+   {% block  content %}
+    
+
+    <div class="container">
+
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h3>Ajouter Consultation</h3>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+    
+  <form method="post">
+    <div class="row">
+      <div class="col-12">
+         <div class="card card-info">
+              <div class="sm-card-header bg-primary">
+                <h3 class="card-title" style="color: white ;">&nbsp; Patient</h3>
+              </div>
+              <div class="card-body">
+                <!-- Color Picker -->
+                <div class="row">
+                 <div class="col-9">
+                
+                {% csrf_token %}
+
+                <div class="form-group">
+                  <label>Nom</label>
+                  <input type="text" name="nom" class="form-control my-colorpicker1">
+                </div>
+                <!-- /.form group -->
+
+                <!-- Color Picker -->
+                <div class="form-group">
+                  <label>Preom</label>
+                  <input type="text" name="prenom" class="form-control my-colorpicker1">
+                </div>
+                <!-- /.form group -->
+
+                <!-- time Picker -->
+                <div class="form-group">
+                  <label>Date Naissance</label>
+                  <input type="date" name="Date_Naissance" class="form-control my-colorpicker1">
+                </div>
+
+                <div class="form-group">
+                  <label>Sex</label>
+                  <input type="text" name="sex" class="form-control my-colorpicker1">
+                </div>
+                <div class="form-group">
+                  <label>Groupe Sanguin</label>
+                  <input type="text" name="groupe_Sanguin" class="form-control my-colorpicker1">
+                </div>
+                </div>
+
+
+                <div class="col-3">
+                <img src="{%static 'image/img.jpg'%}" style="width: 250px; height: 400px;">
+                </div>
+                </div>
+              </div>
+      </div>
+    </div>
+
+
+   <br>   <br>  
+      <div class="col-12">
+        <div class="card ">
+              <div class="sm-card-header bg-primary">
+                <h3 class="card-title" style="color: white ;">&nbsp;Consultations</h3>
+              </div>
+              <div class="card-body">
+
+              <div class="row">
+               <div class="col-6">
+                <div class="form-group">
+                  <label>Date Consultation</label>
+                  <input type="date" name="Date_Consultation" class="form-control my-colorpicker1">
+                </div>
+
+                <div class="form-group">
+                  <label>Poids (kg)</label>
+                  <input type="text" name="poids" class="form-control my-colorpicker1">
+                </div>
+               </div>
+                
+                
+              <div class="col-6">
+                <div class="form-group">
+                  <label>Tention</label>
+                  <input type="text" name="Tension" class="form-control my-colorpicker1">
+                </div>
+
+                <div class="form-group">
+                  <label>Taille (cm) </label>
+                  <input type="text" name="Taille" class="form-control my-colorpicker1">
+                </div>
+                </div>
+              </div>
+
+                <div class="form-group">
+                  <label>Observation</label>
+                  <textarea type="text" name="Observation" class="form-control my-colorpicker1"></textarea>
+                  
+                </div>
+
+           </div>              
+      </div>
+    </div>
+  <br>   
+      <div class="col-12">
+       <div class="card">
+         <div class="card-body">
+
+         <div class="col-6">
+
+                <button type="button" class="btn" style="background-color : #F1C40F">Annuler</button>
+               <button type="submit" class="btn btn-primary pull-right">Enregistrer</button>
+               </div>
+
+                    
+                </div>
+      </div>
+    
+</div>
+  </form>
+</div>
+
+    {% endblock %}
