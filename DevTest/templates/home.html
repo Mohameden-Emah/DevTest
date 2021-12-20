@@ -3,7 +3,8 @@
 
      {% block  content %}    
      <br> 
-        <section class="content-header">
+  <div class="container">
+    <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -32,12 +33,12 @@
             <td>{{C.Date_Naissance}}</td>
             <td>{{C.Date_Consultation}}</td>
             <td>
-            <a class="btn" style="background-color : #F1C40F" >Edite</a>
+            <a class="btn" href="#" style="background-color : #F1C40F"  >Edite</a>
             <a class="btn btn-danger">Delet</a>
             </td>
           </tr>
         {% endfor %}
         </tbody>
       </table>
-      
+      </div>
   {% endblock %}
