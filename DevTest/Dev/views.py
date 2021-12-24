@@ -1,38 +1,43 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Consultation
+from .forms import CreatConsultation
 # Create your views here.
 def home(request):
     Consult = Consultation.objects.all()
     return render(request, 'home.html', {'Consult' : Consult})
 
 def AjoutConsultation(request):
-    Consult = Consultation.objects.all()
-    if request.method == 'POST' :
-        nom = request.POST['nom']
-        prenom = request.POST['prenom']
-        Date_Naissance = request.POST['Date_Naissance']
-        sex = request.POST['sex']
-        groupe_Sanguin = request.POST['groupe_Sanguin']
-        Date_Consultation = request.POST['Date_Consultation']
-        Poids = request.POST['Poids']
-        Tension = request.POST['Tension']
-        Taille = request.POST['Taille']
-        Observation = request.POST['Observation']
+    form = CreatConsultation()
+    if request.method == "POST":
+        print(request.POST)
+        form = CreatConsultation(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    context = {'form' : form}        
+    return render(request, 'AjoutConsultation.html', context)
+
+
+def Update(request, id):
+    updateCons = Consultation.objects.get(pk=id)
+    form = CreatConsultation(instance=updateCons)
+    if request.method == "POST":
         
-        consultation = Consultation.objects.create(
-            nom=nom,
-            prenom=prenom,
-            Date_Naissance=Date_Naissance,
-            sex=sex,
-            groupe_Sanguin=groupe_Sanguin,
-            Date_Consultation=Date_Consultation,
-            Poids=Poids,
-            Tension=Tension,
-            Taille=Taille,
-            Observation=Observation
-        )
+        form = CreatConsultation(request.POST, instance=updateCons)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    context = {'form' : form}
+    return render(request, 'AjoutConsultation.html', context)
 
-    return render(request, 'AjoutConsultation.html', {'Consult ' : Consult})
 
+def Delete(request, id):
+    deletCons = Consultation.objects.get(pk=id)
+    if request.method == "POST":
+        deletCons.delete()
+        return redirect('/')
+
+    context = {'deletCons' : deletCons}
+    return render(request, 'Delete.html', context)    
    

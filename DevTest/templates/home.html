@@ -33,8 +33,8 @@
             <td>{{C.Date_Naissance}}</td>
             <td>{{C.Date_Consultation}}</td>
             <td>
-            <a class="btn" href="#" style="background-color : #F1C40F"  >Edite</a>
-            <a class="btn btn-danger">Delet</a>
+            <a class="btn" href="{% url 'Update' C.pk %}" style="background-color : #F1C40F"  >Edite</a>
+            <a class="btn btn-danger" href="{% url 'Delete' C.pk %}">Delet</a>
             </td>
           </tr>
         {% endfor %}
